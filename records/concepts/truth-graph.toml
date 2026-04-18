@@ -1,0 +1,26 @@
+id = "truth-graph"
+name = "Truth Graph"
+status = "active"
+
+[definition]
+description = """
+The Truth Graph is the fundamental, lens-independent source of truth in NEXUS.
+
+It is a graph of facts about a system — built from LOGOS records (.md narrative
+and .toml structured facts). It represents everything NEXUS knows about a system
+without committing to any particular view, methodology, or output format.
+
+Facts in the Truth Graph include: actors, behaviors, constraints, relationships,
+intentions, domain rules, and invariants. These facts are elicited through
+LOGOS documentation and ATLAS modeling sessions.
+"""
+
+[properties]
+lens_independent = true
+format = "graph of facts (implemented in LOGOS records)"
+built_by = ["LOGOS documentation", "ATLAS modeling sessions"]
+queried_by = ["ATLAS (when applying lenses)", "CORTEX (when reasoning about the system)"]
+
+[relationships]
+lenses = ["Event Model lens", "FnHCI lenses", "API lens", "Data model lens"]
+lives_in = "NEXUS-LOGOS"

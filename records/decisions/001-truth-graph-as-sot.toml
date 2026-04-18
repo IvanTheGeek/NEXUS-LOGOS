@@ -1,0 +1,49 @@
+id = "001"
+title = "Truth Graph is the Source of Truth"
+date = "2026-04-18"
+status = "accepted"
+authors = ["Ivan", "Claude"]
+
+[context]
+description = """
+Early NEXUS design treated the Event Model (Adam Dymitruk's methodology) as the
+source of truth for system design. However, the Event Model is a specific lens
+optimized for understanding system behavior as a timeline. It is not the only
+valid projection of the system's truth.
+
+Other valid projections include: data models, API contracts, UI specifications,
+deployment topology, permission models, etc. Treating the Event Model as the SoT
+would privilege one view over all others and make NEXUS less general.
+"""
+
+[decision]
+description = """
+The Truth Graph is the fundamental, lens-independent source of truth in NEXUS.
+
+The Truth Graph is a graph of facts about a system. It is built from LOGOS records.
+It is not tied to any particular methodology or output format.
+
+The Event Model (implemented in NEXUS-EventModeling) is a lens applied to the Truth
+Graph for system design and behavior specification purposes. It is the primary lens
+in Phase 1 but not the only possible lens.
+
+FnHCI targets (HTML, Blazor, TUI, etc.) are additional lenses. API contracts,
+data models, and deployment specs are further lenses. All are projections of the
+same Truth Graph.
+"""
+
+[consequences]
+positive = [
+  "NEXUS is not locked to one methodology",
+  "New lenses can be added without changing the Truth Graph",
+  "The same system can be described from multiple valid perspectives simultaneously",
+  "FORGE can generate any artifact from the same Truth Graph by selecting lenses",
+]
+negative = [
+  "The Truth Graph format must be defined — adds a foundational design task",
+  "More abstract than 'Event Model is the spec' — requires more conceptual overhead",
+]
+
+[references]
+event_modeling_author = "Adam Dymitruk"
+nexus_methodology = "NEXUS-EventModeling/EVENT_MODELING.md"

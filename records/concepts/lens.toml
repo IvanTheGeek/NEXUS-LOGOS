@@ -1,0 +1,31 @@
+id = "lens"
+name = "Lens"
+status = "active"
+
+[definition]
+description = """
+A lens is a projection of the Truth Graph for a specific purpose. It surfaces
+a particular view of the truth without changing the underlying facts.
+
+Multiple lenses can be active simultaneously. Each lens reveals different
+aspects of the same Truth Graph. Adding a lens does not modify the Truth Graph.
+
+FORGE selects appropriate code generators based on which lenses are active
+in a Spec. The same Truth Graph + different lenses = different artifacts.
+"""
+
+[known_lenses]
+event_model = "System behavior as a timeline (Actors, Commands, Events, Views, GWT)"
+fnhci_html = "Web UI: forms, displays, browser interactions"
+fnhci_blazor = "Blazor component model (.NET 10, event-sourced)"
+fnhci_tui = "Terminal UI: key bindings, character layout"
+fnhci_lcd = "Embedded display: character constraints, line width"
+fnhci_mobile = "Touch targets, gesture model, platform conventions"
+fnhci_desktop = "Window chrome, native controls, menus"
+api = "Endpoint shapes, request/response schemas"
+data_model = "Types, schemas, migrations"
+
+[properties]
+is_projection = true
+modifies_truth_graph = false
+multiple_active = true
