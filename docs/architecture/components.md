@@ -12,6 +12,7 @@ The NEXUS ecosystem consists of the following components. Each has a single resp
 | **NEXUS-FORGE** | Language-agnostic code generator — reads Spec + active lenses, generates source code in F#, JS, C++, Rust, or any target language. |
 | **CORTEX** | AI assistance layer — Claude, GPT, Gemini; external to NEXUS; reads LOGOS, drives ATLAS sessions, executes FORGE generation. |
 | **NEXUS-admin** | Workspace scaffolding — templates, checklists, and bootstrap guides for new NEXUS projects. |
+| **PAXUS** | Telemetry subsystem — captures real user sessions as runtime PATHs; always-on local ring buffer → IndexedDB via Service Worker; user can export session log for PATH replay in ATLAS. |
 
 ## Relationships
 

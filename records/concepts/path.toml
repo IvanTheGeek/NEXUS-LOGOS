@@ -1,0 +1,59 @@
+id = "path"
+name = "PATH"
+status = "active"
+defined_by = "Ivan (IvanTheGeek)"
+full_reference = "docs/methods/paths.md"
+
+[definition]
+short = "A named, purposeful journey through the Event Model from a specific actor's perspective."
+long = """
+A PATH is a first-class design artifact in NEXUS. It names an actor, declares a goal, sequences
+the specific command and projection slices the actor traverses to reach that goal, and carries
+concrete example data through every slice. PATHs are the source of all example data in NEXUS —
+example data does not exist independently of a PATH. The same example data that flows through the
+PATH during design becomes the Given/When/Then test cases. Design and test are the same artifact.
+"""
+
+[structure]
+fields = ["name", "actor", "goal", "slice_sequence", "example_data", "status"]
+
+[lifecycle]
+states = ["Identified", "Modeled", "Specified", "Implemented", "Verified"]
+transitions = "linear — each state requires the prior"
+
+[registry]
+description = "The PATH Registry contains all known PATHs regardless of source or formalization level."
+sources = ["designed", "discovered", "telemetry"]
+
+[minimal_coverage]
+description = """
+The Minimal Coverage Set is a curated subset of the PATH Registry — the smallest collection
+of PATHs that achieves full branch coverage. One PATH per unique branch. This is the set
+wired into automated testing (Playwright). Adding to it is a deliberate human decision.
+"""
+
+[chaining]
+description = """
+Atomic PATHs compose into larger journeys. The output state of PATH A becomes the input
+context of PATH B. Example data must connect explicitly across the boundary. Gaps in
+data flow reveal design problems early.
+"""
+
+[runtime]
+description = """
+The user's actual event log IS a PATH. PAXUS captures real user sessions as runtime PATHs.
+Design PATHs = what should happen. Runtime PATHs = what did happen. The gap is where bugs live.
+"""
+
+[fidelity_levels]
+executive = "Happy path only; business needs"
+ux = "Screen interactions and actor touchpoints"
+domain = "End-user workflow focus"
+technical = "Implementation details, processor internals, projection dependencies"
+
+[related_concepts]
+event_model = "PATHs traverse slices; slices are the unit the Event Model is built from"
+gwt = "PATH example data is the direct source of GWT Given/When/Then clauses"
+atlas = "ATLAS visualizes, walks, and explores PATHs — predefined mode, choose-your-own-adventure, walkthrough view"
+paxus = "PAXUS captures runtime PATHs — the telemetry subsystem"
+logos = "Each PATH has a LOGOS topic tracking its lifecycle and linking design to implementation"
