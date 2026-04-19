@@ -1,3 +1,18 @@
+# NEXUS
+
+NEXUS is not a brand. It is a concept — a way of approaching information, knowledge,
+and software development. Everything Ivan builds falls under this concept. The name
+represents the idea that all work is connected: methodology, tooling, applications,
+and the systems that generate and validate them are all part of one ecosystem.
+
+NEXUS-prefixed repos (NEXUS-EventModeling, NEXUS-STRATUM, NEXUS-LOGOS, etc.) are
+the infrastructure layer of this ecosystem. FnTools, CheddarBooks, LaundryLog, and
+other projects are distinct brands or products built on and validated by this
+infrastructure. CORTEX (Claude, GPT, etc.) reads NEXUS knowledge before every session
+so that any AI entering the ecosystem understands the context without re-explanation.
+
+---
+
 # NEXUS Principles
 
 ## 1. Truth Graph is the Source of Truth
