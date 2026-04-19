@@ -1,12 +1,42 @@
 # FnHCI — Functional Human-Computer Interaction
 
-FnHCI is a NEXUS component that defines a universal HCI abstraction — a target-agnostic model of human-computer interaction with adapters for every concrete output medium.
+FnHCI is part of the **FnTools** ecosystem (`FnTools.online`), a separate brand for
+technical, developer-facing, and reusable tooling. FnHCI is not a NEXUS component —
+it is an external dependency that NEXUS and its app projects consume.
 
-> Library: `NEXUS-FnHCI`
+> Repo: `IvanTheGeek/FnTools`
+> Namespace: `FnTools.FnHCI`
+
+## FnTools Brand Context
+
+FnTools is orthogonal to NEXUS and to Cheddar. Both can use FnTools components.
+The family of products under FnTools:
+
+| Name | Role |
+|---|---|
+| **FnHCI** | Universal HCI abstraction — umbrella for all human-computer interaction modes |
+| **FnUI** | Visual system brand — `FnTools.FnHCI.UI` / `FnTools.FnHCI.UI.Blazor`; Bolero replacement |
+| **FnCLI** | Terminal/CLI interaction under FnHCI |
+| **FnAPI** | API interaction primitives and library line |
+| **FnA11y** | Accessibility layer under FnHCI |
+| **FnMCP** | MCP servers and tooling (FnMCP.Penpot, FnMCP.Nexus, etc.) |
+
+Domain: `FnTools.online`
+
+## Namespace Structure
+
+```
+FnTools.FnHCI           — interaction primitives and shared abstractions (the umbrella)
+FnTools.FnHCI.UI        — visual view/state/composition model
+FnTools.FnHCI.UI.Blazor — Blazor host/runtime adapter (.NET 10)
+```
+
+Outward-facing package/brand names: `FnUI`, `FnUI.Blazor`
 
 ## Core Idea
 
-FnHCI sits between the Spec (produced by ATLAS) and any specific output target. A Spec flows through a FnHCI lens pipeline:
+FnHCI sits between the Spec (produced by ATLAS) and any specific output target.
+A Spec flows through a FnHCI lens pipeline:
 
 ```
 Spec (core Event Model)
@@ -22,8 +52,8 @@ Adding a new output target = writing a new adapter. The core and all other adapt
 | Adapter | Output |
 |---|---|
 | HTML | Bare HTML, CSS — browser |
-| Blazor | .NET 10 Blazor components — event-sourced; NEXUS's own replacement for Bolero |
-| TUI | Terminal UI — key bindings, character layout, color codes |
+| Blazor (FnUI.Blazor) | .NET 10 Blazor components — event-sourced; NEXUS's replacement for Bolero |
+| TUI / FnCLI | Terminal UI — key bindings, character layout, color codes |
 | LCD | Embedded display — character constraints, line width, raster limits |
 | Receipt printer | Receipt format — line width, character set, cut commands |
 | Mobile | Touch targets, gesture model, platform conventions |
@@ -54,3 +84,9 @@ The Event Model lens maps naturally to FnHCI:
 | GWT Given | Preconditions for the interaction |
 | GWT When | The Actor's action |
 | GWT Then | The resulting state change and display update |
+
+## Relationship to NEXUS-FORGE
+
+FORGE generates FnHCI components from Specs. The active lenses in a Spec determine which
+FnHCI adapters FORGE targets. A Spec with the Blazor lens active → FORGE generates
+`FnTools.FnHCI.UI.Blazor` components.
